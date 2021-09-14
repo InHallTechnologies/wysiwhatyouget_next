@@ -15,6 +15,7 @@ const RichTextEditor = () => {
         const textBody = focusRef.current.contentDocument.querySelector('body');
         textBody.style.fontSize = "1.5rem"
         textBody.style.fontFamily =  'PT Sans'
+        textBody.style.wordWrap = 'break-word';
 
         showCode.current = false;
     },[]);
