@@ -1,0 +1,24 @@
+.container {
+    border:  1px solid black;
+}
+
+.editor {
+    
+    padding: 10px;
+}
+
+.editorContainer {
+   height: 95vh;
+}
+
+.editorControl {
+    border: 1px solid black;
+    padding: 2px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+#output {
+    border: none;
+}
