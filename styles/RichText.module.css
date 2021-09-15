@@ -22,3 +22,43 @@
 #output {
     border: none;
 }
+
+.actionBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.primaryAction {
+    background-color: #E80202;
+    margin-right: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.primaryActionLabel {
+    text-align: center;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+    font-size: 13px;
+}
+
+.actionContainer {
+    display: flex;
+    align-items: center;
+}
+
+.backIcon {
+    padding:10px
+}
+
+.sectionTitle {
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0 5px;
+    margin-bottom: 5px;
+}
+
