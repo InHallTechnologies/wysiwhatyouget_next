@@ -36,6 +36,10 @@ const RichTextEditor = () => {
         }
     }
 
+    const handleSendData = () => {
+        window.ReactNativeWebView.postMessage(JSON.stringify({name:"Rishabh Verma"}));
+    }
+
 
 
     return(
@@ -62,6 +66,9 @@ const RichTextEditor = () => {
                 </div>
                 
                 <iframe spellCheck={false} id="output" style={{border:'none', marginTop:'10px'}} width={"100%"} height={"100%"}  ref={focusRef} name="textField" />
+                <button onClick={handleSendData}>
+                    Send Data
+                </button>
             </div>
         </div>
     )
