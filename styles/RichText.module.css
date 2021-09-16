@@ -1,9 +1,11 @@
 .container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 
 }
 .topContainer {
-    position: sticky;
-    top: 0;
+   
     background-color: white;
 }
 
@@ -17,8 +19,7 @@
 }
 
 .editorContainer {
-   height: 95vh;
-   
+    flex: 1;
 }
 
 .editorControl {
