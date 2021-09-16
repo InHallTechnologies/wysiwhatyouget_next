@@ -22,7 +22,8 @@ const RichTextEditor = () => {
 
 
 
-    const handleClick = (command) => {
+    const handleClick = (event, command) => {
+        event.preventDefault()
         focusRef.current.contentDocument.execCommand(command)
     }
 
@@ -69,23 +70,23 @@ const RichTextEditor = () => {
             </div>
             <div className={Styles.editorContainer}>
                 <div className={Styles.editorControls}>
-                    <BsTypeBold onClick={() => handleClick("bold")}  size={24} color='#444' className={Styles.editorControl} />
-                    <BsTypeItalic onClick={() => handleClick("italic")}  size={24} color='#444' className={Styles.editorControl}  />
-                    <BsTypeUnderline onClick={() => handleClick("underline")} size={24} color='#444' className={Styles.editorControl}  />
+                    <BsTypeBold onMouseDown={(event) => handleClick(event, "bold")}  size={24} color='#444' className={Styles.editorControl} />
+                    <BsTypeItalic onMouseDown={(event) => handleClick(event,"italic")}  size={24} color='#444' className={Styles.editorControl}  />
+                    <BsTypeUnderline onMouseDown={(event) => handleClick(event,"underline")} size={24} color='#444' className={Styles.editorControl}  />
                     <AiOutlineLink data-cmd="createLink" size={24} color='#444' className={Styles.editorControl}  />
 
                     <hr />
                     
-                    <BsJustifyLeft onClick={() => handleClick("justifyLeft")}  size={24} color='#444' className={Styles.editorControl} />
-                    <BsTextCenter onClick={() => handleClick("justifyCenter")}  size={24} color='#444' className={Styles.editorControl} />
-                    <BsJustify onClick={() => handleClick("justifyFull")}  size={24} color='#444' className={Styles.editorControl} />
-                    <BsJustifyRight onClick={() => handleClick("justifyRight")}  size={24} color='#444' className={Styles.editorControl} />
+                    <BsJustifyLeft onMouseDown={(event) => handleClick(event,"justifyLeft")}  size={24} color='#444' className={Styles.editorControl} />
+                    <BsTextCenter onMouseDown={(event) => handleClick(event,"justifyCenter")}  size={24} color='#444' className={Styles.editorControl} />
+                    <BsJustify onMouseDown={(event) => handleClick(event,"justifyFull")}  size={24} color='#444' className={Styles.editorControl} />
+                    <BsJustifyRight onMouseDown={(event) => handleClick(event,"justifyRight")}  size={24} color='#444' className={Styles.editorControl} />
                     
                     
-                    <AiOutlineOrderedList onClick={() => handleClick("insertOrderedList")}  size={24} color='#444' className={Styles.editorControl}  />
-                    <AiOutlineUnorderedList onClick={() => handleClick("insertUnOrderedList")}  size={24} color='#444' className={Styles.editorControl}  />
+                    <AiOutlineOrderedList onMouseDown={(event) => handleClick(event,"insertOrderedList")}  size={24} color='#444' className={Styles.editorControl}  />
+                    <AiOutlineUnorderedList onMouseDown={(event) => handleClick(event,"insertUnOrderedList")}  size={24} color='#444' className={Styles.editorControl}  />
 
-                    <BsCodeSlash onClick={toggleCode} size={24} color='#444' className={Styles.editorControl}  />
+                    {/* <BsCodeSlash onClick={toggleCode} size={24} color='#444' className={Styles.editorControl}  /> */}
                 </div>
                 
                 <iframe spellCheck={false} id="output" style={{border:'none', marginTop:'10px'}} width={"100%"} height={"100%"}  ref={focusRef} name="textField" />
