@@ -74,13 +74,13 @@ const RichTextEditor = () => {
                     <BsTypeBold onMouseDown={(event) => handleClick(event, "bold")}  size={24} color='#444' className={Styles.editorControl} />
                     <BsTypeItalic onMouseDown={(event) => handleClick(event,"italic")}  size={24} color='#444' className={Styles.editorControl}  />
                     <BsTypeUnderline onMouseDown={(event) => handleClick(event,"underline")} size={24} color='#444' className={Styles.editorControl}  />
-                    <AiOutlineLink data-cmd="createLink" size={24} color='#444' className={Styles.editorControl}  />
+                    {/* <AiOutlineLink data-cmd="createLink" size={24} color='#444' className={Styles.editorControl}  /> */}
 
                     <hr />
                     
                     <BsJustifyLeft onMouseDown={(event) => handleClick(event,"justifyLeft")}  size={24} color='#444' className={Styles.editorControl} />
                     <BsTextCenter onMouseDown={(event) => handleClick(event,"justifyCenter")}  size={24} color='#444' className={Styles.editorControl} />
-                    <BsJustify onMouseDown={(event) => handleClick(event,"justifyFull")}  size={24} color='#444' className={Styles.editorControl} />
+                    {/* <BsJustify onMouseDown={(event) => handleClick(event,"justifyFull")}  size={24} color='#444' className={Styles.editorControl} /> */}
                     <BsJustifyRight onMouseDown={(event) => handleClick(event,"justifyRight")}  size={24} color='#444' className={Styles.editorControl} />
                     
                     
