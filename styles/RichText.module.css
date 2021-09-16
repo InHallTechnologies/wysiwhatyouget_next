@@ -19,7 +19,7 @@
 }
 
 .editorContainer {
-    flex: 1;
+    flex: 0.99;
 }
 
 .editorControl {
