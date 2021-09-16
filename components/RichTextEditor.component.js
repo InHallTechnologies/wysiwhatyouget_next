@@ -17,6 +17,7 @@ const RichTextEditor = () => {
         textBody.style.fontFamily =  'PT Sans'
         textBody.style.wordWrap = 'break-word';
         showCode.current = false;
+        console.log(window)
         if (window.currentContent){
             textBody.innerHTML = window.currentContent;
         }
@@ -27,12 +28,6 @@ const RichTextEditor = () => {
         }
     },[]);
 
-    useEffect(() => {
-        const textBody = focusRef.current.contentDocument.querySelector('body');
-        if (window.currentContent){
-            textBody.innerHTML = window.currentContent;
-        }
-    }, [window.currentContent, focusRef])
 
 
     const reactNativeCallback = (event) => {
