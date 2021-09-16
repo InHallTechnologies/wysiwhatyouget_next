@@ -17,7 +17,9 @@ const RichTextEditor = () => {
         textBody.style.fontFamily =  'PT Sans'
         textBody.style.wordWrap = 'break-word';
         showCode.current = false;
-        textBody.innerHTML = window.currentContent;
+        if (window.currentContent){
+            textBody.innerHTML = window.currentContent;
+        }
         document.addEventListener('message', reactNativeCallback);
 
         return () => {
@@ -25,8 +27,9 @@ const RichTextEditor = () => {
         }
     },[]);
 
-    const reactNativeCallback = (event) => {
 
+    const reactNativeCallback = (event) => {
+        alert(event.data);
     }
 
     const handleClick = (command) => {
