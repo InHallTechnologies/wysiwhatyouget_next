@@ -56,6 +56,7 @@ const RichTextEditor = () => {
 
     return(
         <div className={Styles.container}>
+            <div className={Styles.topContainer}>
             <div className={Styles.actionBar}>
                 <div className={Styles.actionContainer} onClick={handleBackPress} >
                     <div className={Styles.backIcon}>
@@ -68,8 +69,8 @@ const RichTextEditor = () => {
                     <p className={Styles.primaryActionLabel}>Save Story</p>
                 </div>
             </div>
-            <div className={Styles.editorContainer}>
-                <div className={Styles.editorControls}>
+
+            <div className={Styles.editorControls}>
                     <BsTypeBold onMouseDown={(event) => handleClick(event, "bold")}  size={24} color='#444' className={Styles.editorControl} />
                     <BsTypeItalic onMouseDown={(event) => handleClick(event,"italic")}  size={24} color='#444' className={Styles.editorControl}  />
                     <BsTypeUnderline onMouseDown={(event) => handleClick(event,"underline")} size={24} color='#444' className={Styles.editorControl}  />
@@ -87,8 +88,9 @@ const RichTextEditor = () => {
                     <AiOutlineUnorderedList onMouseDown={(event) => handleClick(event,"insertUnOrderedList")}  size={24} color='#444' className={Styles.editorControl}  />
 
                     {/* <BsCodeSlash onClick={toggleCode} size={24} color='#444' className={Styles.editorControl}  /> */}
-                </div>
-                
+            </div>
+            </div>
+            <div className={Styles.editorContainer}> 
                 <iframe spellCheck={false} id="output" style={{border:'none', marginTop:'10px'}} width={"100%"} height={"100%"}  ref={focusRef} name="textField" />
             </div>
         </div>

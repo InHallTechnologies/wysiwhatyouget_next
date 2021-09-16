@@ -1,6 +1,15 @@
 .container {
 
 }
+.topContainer {
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+.actionBar {
+    background-color: white;
+}
 
 .editor {
     
@@ -9,6 +18,7 @@
 
 .editorContainer {
    height: 95vh;
+   
 }
 
 .editorControl {
