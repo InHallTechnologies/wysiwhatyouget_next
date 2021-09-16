@@ -16,9 +16,18 @@ const RichTextEditor = () => {
         textBody.style.fontSize = "1.5rem"
         textBody.style.fontFamily =  'PT Sans'
         textBody.style.wordWrap = 'break-word';
-
         showCode.current = false;
+        textBody.innerHTML = window.currentContent;
+        document.addEventListener('message', reactNativeCallback);
+
+        return () => {
+            document.removeEventListener("message", reactNativeCallback);
+        }
     },[]);
+
+    const reactNativeCallback = (event) => {
+
+    }
 
     const handleClick = (command) => {
         focusRef.current.contentDocument.execCommand(command)
