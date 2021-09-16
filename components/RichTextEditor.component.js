@@ -17,22 +17,10 @@ const RichTextEditor = () => {
         textBody.style.fontFamily =  'PT Sans'
         textBody.style.wordWrap = 'break-word';
         showCode.current = false;
-        console.log(window)
-        if (window.currentContent){
-            textBody.innerHTML = window.currentContent;
-        }
-        document.addEventListener('message', reactNativeCallback);
-
-        return () => {
-            document.removeEventListener("message", reactNativeCallback);
-        }
+        focusRef.current.focus();
     },[]);
 
 
-
-    const reactNativeCallback = (event) => {
-        alert(event.data);
-    }
 
     const handleClick = (command) => {
         focusRef.current.contentDocument.execCommand(command)
@@ -101,9 +89,6 @@ const RichTextEditor = () => {
                 </div>
                 
                 <iframe spellCheck={false} id="output" style={{border:'none', marginTop:'10px'}} width={"100%"} height={"100%"}  ref={focusRef} name="textField" />
-                <button onClick={() => {window.ReactNativeWebView.postMessage({window:window, action:"CONSOLE"})}}>
-                    Send Data
-                </button>
             </div>
         </div>
     )
