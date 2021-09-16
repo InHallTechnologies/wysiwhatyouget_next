@@ -27,6 +27,13 @@ const RichTextEditor = () => {
         }
     },[]);
 
+    useEffect(() => {
+        const textBody = focusRef.current.contentDocument.querySelector('body');
+        if (window.currentContent){
+            textBody.innerHTML = window.currentContent;
+        }
+    }, [window.currentContent, focusRef])
+
 
     const reactNativeCallback = (event) => {
         alert(event.data);
