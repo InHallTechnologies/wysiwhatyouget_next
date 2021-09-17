@@ -49,7 +49,8 @@ const RichTextEditor = () => {
 
 
     const handleBackPress = () => {
-        window.ReactNativeWebView.postMessage(JSON.stringify({action:"GoBack"}));
+        const textBody = focusRef.current.contentDocument.querySelector('body');
+        window.ReactNativeWebView.postMessage(JSON.stringify({action:"GoBack", content:textBody.innerHTML}));
     }
 
 
