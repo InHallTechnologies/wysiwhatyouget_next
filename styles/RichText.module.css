@@ -45,8 +45,8 @@
     margin-right: 10px;
     border-radius: 5px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 35px;
+   
 }
 
 .primaryActionLabel {
@@ -71,5 +71,9 @@
     font-size: 15px;
     margin: 0 5px;
     margin-bottom: 5px;
+}
+
+.topControl {
+    display: flex;
 }
 

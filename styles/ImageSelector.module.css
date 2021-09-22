@@ -1,0 +1,15 @@
+.container{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.uploadImageLabel {
+   color: #E80202;
+   font-weight: bold; 
+   align-self: flex-end;
+   margin-bottom: 20px;
+   margin-top: 10px;
+   cursor: pointer;
+}

@@ -3,6 +3,11 @@ import Styles from '../styles/RichText.module.css';
 import { BsTypeBold, BsTypeItalic, BsJustifyLeft, BsJustify, BsJustifyRight, BsTextCenter, BsCodeSlash, BsTypeUnderline } from 'react-icons/bs';
 import { IoMdArrowBack } from 'react-icons/io';
 import { AiOutlineOrderedList, AiOutlineUnorderedList, AiOutlineLink } from 'react-icons/ai';
+import { BiImageAdd } from 'react-icons/bi';
+import LinkModal from './LinkModal.component';
+import ImageModal from './ImageModal.component';
+import { Button } from 'react-bootstrap'
+
 
 const RichTextEditor = () => {
 
@@ -27,20 +32,29 @@ const RichTextEditor = () => {
         focusRef.current.contentDocument.execCommand(command)
     }
 
-
-    
-    
-
-    const toggleCode = () => {
-        const textBody = focusRef.current.contentDocument.querySelector('body');
-        if (showCode.current){
-            textBody.innerHTML = textBody.textContent;
-            showCode.current = true;  
-        }else {
-            textBody.textContent = textBody.innerHTML;
-            showCode.current = false;
-        }
+    const handleLink = (url) => {
+        focusRef.current.contentDocument.execCommand("createLink",false, url)
     }
+
+    const handleImage = (url, title) => {
+        const textBody = focusRef.current.contentDocument.querySelector('body');
+        textBody.innerHTML += `<img style="max-width: 100%;border-radius: 10px;" src="${url}" alt="${title}"  />`
+    }
+
+
+    
+    
+
+    // const toggleCode = () => {
+    //     const textBody = focusRef.current.contentDocument.querySelector('body');
+    //     if (showCode.current){
+    //         textBody.innerHTML = textBody.textContent;
+    //         showCode.current = true;  
+    //     }else {
+    //         textBody.textContent = textBody.innerHTML;
+    //         showCode.current = false;
+    //     }
+    // }
 
     const handleSendData = () => {
         const textBody = focusRef.current.contentDocument.querySelector('body');
@@ -54,6 +68,8 @@ const RichTextEditor = () => {
     }
 
 
+    
+
 
     return(
         <div className={Styles.container}>
@@ -66,17 +82,19 @@ const RichTextEditor = () => {
                     <p className={Styles.sectionTitle}>Story</p>
                 </div>
 
-                <div className={Styles.primaryAction} onClick={handleSendData} >
-                    <p className={Styles.primaryActionLabel}>Save Story</p>
-                </div>
+                <Button variant='danger' className={Styles.primaryAction} onClick={handleSendData}>
+                    Save Story
+                </Button>
             </div>
 
             <div className={Styles.editorControls}>
-                    <BsTypeBold onMouseDown={(event) => handleClick(event, "bold")}  size={24} color='#444' className={Styles.editorControl} />
-                    <BsTypeItalic onMouseDown={(event) => handleClick(event,"italic")}  size={24} color='#444' className={Styles.editorControl}  />
-                    <BsTypeUnderline onMouseDown={(event) => handleClick(event,"underline")} size={24} color='#444' className={Styles.editorControl}  />
-                    {/* <AiOutlineLink data-cmd="createLink" size={24} color='#444' className={Styles.editorControl}  /> */}
-
+                    <div className={Styles.topControl}>
+                        <BsTypeBold onMouseDown={(event) => handleClick(event, "bold")}  size={24} color='#444' className={Styles.editorControl} />
+                        <BsTypeItalic onMouseDown={(event) => handleClick(event,"italic")}  size={24} color='#444' className={Styles.editorControl}  />
+                        <BsTypeUnderline onMouseDown={(event) => handleClick(event,"underline")} size={24} color='#444' className={Styles.editorControl}  />
+                        <LinkModal handleLink={handleLink} icon={<AiOutlineLink data-cmd="createLink" size={24} color='#444' className={Styles.editorControl}  />} />
+                        <ImageModal handleImage={handleImage}  icon={<BiImageAdd data-cmd="createLink" size={24} color='#444' className={Styles.editorControl}  />} />
+                    </div>
                     <hr />
                     
                     <BsJustifyLeft onMouseDown={(event) => handleClick(event,"justifyLeft")}  size={24} color='#444' className={Styles.editorControl} />
@@ -87,6 +105,7 @@ const RichTextEditor = () => {
                     
                     <AiOutlineOrderedList onMouseDown={(event) => handleClick(event,"insertOrderedList")}  size={24} color='#444' className={Styles.editorControl}  />
                     <AiOutlineUnorderedList onMouseDown={(event) => handleClick(event,"insertUnOrderedList")}  size={24} color='#444' className={Styles.editorControl}  />
+
 
                     {/* <BsCodeSlash onClick={toggleCode} size={24} color='#444' className={Styles.editorControl}  /> */}
             </div>
