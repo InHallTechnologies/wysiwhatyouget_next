@@ -8,7 +8,7 @@ import ImageSelectionPreview from "./ImageSelectionPreview.component";
 import { Button } from "react-bootstrap";
 
  
-const ImageSelector = ({ handleImage }) => {
+const ImageSelector = ({ handleImage, handleClose }) => {
     const [loading, setLoading] = useState(true);
     const [imageList, setImageList] = useState([]);
     const [selectedImage, setSelectedImage] = useState({
@@ -87,7 +87,7 @@ const ImageSelector = ({ handleImage }) => {
                 <span className={Styles.uploadImageLabel} onClick={uploadImage} >+ Upload Image</span>
             }   
 
-            <Button onClick={() => handleImage(selectedImage.url, selectedImage.title)} style={{backgroundColor:'#E80202', color:"white", width:'100%'}} variant="Primary">Submit</Button>
+            <Button onClick={() => {handleImage(selectedImage.url, selectedImage.title);handleClose();}} style={{backgroundColor:'#E80202', color:"white", width:'100%'}} variant="Primary">Submit</Button>
 
         </div>
     );
