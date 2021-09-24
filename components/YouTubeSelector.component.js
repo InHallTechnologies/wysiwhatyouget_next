@@ -6,7 +6,7 @@ import { BsLink45Deg } from "react-icons/bs";
 import { getYoutubeTitle } from "../backend/YoutubeHandler";
 
 const YoutubeSelector = ({ icon, handleYoutube }) => {
-    const [showModal, setShowModal] = useState(true);
+    const [showModal, setShowModal] = useState(false);
     const [link, setLink] = useState("");
     const [showHint, setShowHint] = useState(false);
     const [youtubeData, setYoutubeData] = useState({
