@@ -63,7 +63,7 @@ const YoutubeSelector = ({ icon, handleYoutube }) => {
                     <Modal.Title>Please enter video url</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Please select any image or upload existing and press submit
+                    Please enter the share url of your youtube video and press submit. For more information checkout hint
                     <InputGroup style={{marginTop:10}} className="mb-3">
                         <InputGroup.Text id="basic-addon1">
                             <BsLink45Deg size={20} color="#444" />
