@@ -2,11 +2,12 @@ import  React, { createRef, useState, useEffect } from 'react';
 import Styles from '../styles/RichText.module.css';
 import { BsTypeBold, BsTypeItalic, BsJustifyLeft, BsJustify, BsJustifyRight, BsTextCenter, BsCodeSlash, BsTypeUnderline } from 'react-icons/bs';
 import { IoMdArrowBack } from 'react-icons/io';
-import { AiOutlineOrderedList, AiOutlineUnorderedList, AiOutlineLink } from 'react-icons/ai';
+import { AiOutlineOrderedList, AiOutlineUnorderedList, AiOutlineLink, AiOutlineYoutube } from 'react-icons/ai';
 import { BiImageAdd } from 'react-icons/bi';
 import LinkModal from './LinkModal.component';
 import ImageModal from './ImageModal.component';
 import { Button } from 'react-bootstrap'
+import YoutubeSelector from './YouTubeSelector.component';
 
 
 const RichTextEditor = () => {
@@ -67,6 +68,11 @@ const RichTextEditor = () => {
         window.ReactNativeWebView.postMessage(JSON.stringify({action:"GoBack", content:textBody.innerHTML}));
     }
 
+    const handleYoutube = (videoId) => {
+        const textBody = focusRef.current.contentDocument.querySelector('body');
+        textBody.innerHTML += `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    }
+
 
     
 
@@ -94,6 +100,7 @@ const RichTextEditor = () => {
                         <BsTypeUnderline onMouseDown={(event) => handleClick(event,"underline")} size={24} color='#444' className={Styles.editorControl}  />
                         <LinkModal handleLink={handleLink} icon={<AiOutlineLink data-cmd="createLink" size={24} color='#444' className={Styles.editorControl}  />} />
                         <ImageModal handleImage={handleImage}  icon={<BiImageAdd data-cmd="createLink" size={24} color='#444' className={Styles.editorControl}  />} />
+                        <YoutubeSelector  handleYoutube={handleYoutube}  icon={<AiOutlineYoutube data-cmd="createLink" size={24} color='#444' className={Styles.editorControl}  />}/>
                     </div>
                     <hr />
                     

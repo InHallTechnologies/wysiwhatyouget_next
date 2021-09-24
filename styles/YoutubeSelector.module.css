@@ -1,0 +1,42 @@
+.actionContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+   
+}
+
+.submitButton {
+    width: 100%;
+}
+
+.showHintLabel {
+    font-weight: 500;
+    margin-left: auto;
+    margin-bottom: 5px;
+    padding: 5px;
+    cursor: pointer;
+    color: red;
+}
+
+.youtubeContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.hintImage {
+    width: 100%;
+    
+    border-radius: 10px;
+   
+}
+
+.videoTitle {
+    color: black;
+    font-size: 17px;
+}
+
+
+.channelName{
+    font-size: 14px;
+    color: rgb(112, 112, 112);
+}
