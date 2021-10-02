@@ -7,7 +7,7 @@ import ImageSelector from "./ImageSelector.component";
 import AdFormatSelector from "./AdsFormatSelector.component";
 
 const ImageModal = ({ icon, handleImage }) => {
-    const [showModal, setShowModal] = useState(true);
+    const [showModal, setShowModal] = useState(false);
     const [link, setLink] = useState("");
 
     const handleClose = () => {

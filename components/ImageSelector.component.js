@@ -6,11 +6,13 @@ import { ref as storageRef, uploadBytesResumable, getDownloadURL } from 'firebas
 import ImageList from "./ImageList.component";
 import ImageSelectionPreview from "./ImageSelectionPreview.component";
 import { Button } from "react-bootstrap";
+import { BsViewList, BsUpload } from 'react-icons/bs';
 
  
 const ImageSelector = ({ handleImage, handleClose }) => {
     const [loading, setLoading] = useState(true);
     const [imageList, setImageList] = useState([]);
+    const [showImageList, setShowImageList] = useState(false);
     const [selectedImage, setSelectedImage] = useState({
         url: "",
         title: "",
@@ -75,9 +77,21 @@ const ImageSelector = ({ handleImage, handleClose }) => {
                 ?
                 <ImageSelectionPreview selectedImage={selectedImage} setSelectedImage={setSelectedImage}  />
                 :
-                <ImageList imageList={imageList} setSelectedImage={setSelectedImage}  />
+                null
 
             }
+
+            {/* {
+                showImageList
+                ?
+                <ImageList imageList={imageList} setSelectedImage={setSelectedImage}  />
+                :
+                <div className={Styles.option} onClick={() => setShowImageList(true)} >
+                    <BsViewList size={30} color="black"  />
+                    <span className={Styles.optionLabel}>Show List</span>
+                </div>
+            } */}
+
             {
                 uploading
                 ?
@@ -87,7 +101,11 @@ const ImageSelector = ({ handleImage, handleClose }) => {
                 ?
                 <span className={Styles.uploadImageLabel} onClick={discardImage} >Discard Image</span>
                 :
-                <span className={Styles.uploadImageLabel} onClick={uploadImage} >+ Upload Image</span>
+                <div className={Styles.option} onClick={uploadImage}>
+                    <BsUpload size={30} color="black"  />
+                    <span className={Styles.optionLabel}>Upload</span>
+                </div>
+               
             }   
 
             <Button onClick={() => {handleImage(selectedImage.url, selectedImage.title);handleClose();}} style={{backgroundColor:'#E80202', color:"white", width:'100%'}} variant="Primary">Submit</Button>
@@ -97,3 +115,6 @@ const ImageSelector = ({ handleImage, handleClose }) => {
 };
 
 export default ImageSelector;
+
+
+{/* <span className={Styles.uploadImageLabel} onClick={uploadImage} >+ Upload Image</span> */}

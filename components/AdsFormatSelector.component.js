@@ -26,10 +26,10 @@ const AdFormatSelector = ({ handleImage, handleClose }) => {
                     var img = new Image;
                     img.width
                     img.onload = function() {
-                        if (img.width > 600 || img.height>600){
-                            alert("Max Width: 600px and Max Height: 600px");
-                            return;
-                        }
+                        // if (img.width > 600 || img.height>600){
+                        //     alert("Recommended width: 600px and height: 600px");
+                        //     return;
+                        // }
                         uploadImage(input.files[0])
                     };
                     img.src = reader.result;
@@ -76,7 +76,7 @@ const AdFormatSelector = ({ handleImage, handleClose }) => {
                 <div>
                     <span>Click on image to upload your ad</span>
                     <img onClick={handleAdUpload} className={Styles.adPlaceHolder} src='/billboard.png' alt="Upload Ad" />
-                    <span className={Styles.adsHint}>max-height: 600px, max-width: 600px</span>
+                    {/* <span className={Styles.adsHint}>Recommended width: 600px and height: 600px</span> */}
                 </div>
                 :
                 <div className={Styles.adContainer}>
