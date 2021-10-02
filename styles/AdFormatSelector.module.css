@@ -1,0 +1,35 @@
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.adPlaceHolder {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.adsHint {
+    font-size: 11px;
+    margin-top: 20px;
+}
+
+.uploadedPercentage {
+    padding: 50px;
+}
+
+.uploadedPercentage span {
+    font-size: 12px;
+}
+
+.adContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.removeImageLabel {
+    margin-left: auto;
+    font-weight: bold;
+    margin-top: 5px;
+    color: #E80202;
+}
+

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { firebaseDatabase, firebaseStorage } from "../backend/firebase-handler";
-import { ref, get } from "firebase/database";
+import { ref, get, push } from "firebase/database";
 import Styles from "../styles/ImageSelector.module.css";
 import { ref as storageRef, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import ImageList from "./ImageList.component";
@@ -41,9 +41,12 @@ const ImageSelector = ({ handleImage, handleClose }) => {
     const uploadImage = () => {
         const input = document.createElement('input');
         input.type = 'file';
+        const keyRef = ref(firebaseDatabase,"USER_POST_IMAGE")
+        const key = push(keyRef).key
+       
         input.onchange = (event) => {
             const file = event.target.files[0];
-            const reference = storageRef(firebaseStorage,"USER_POST_IMAGE/testId");
+            const reference = storageRef(firebaseStorage,`USER_POST_IMAGE/UPLOADED/testId/${key}`);
             const uploadTask = uploadBytesResumable(reference, file, { contentType:'image/*'});
             uploadTask.on('state_changed', (snapshot) => {
                 setUploading(true);

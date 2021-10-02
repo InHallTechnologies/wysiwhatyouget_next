@@ -3,11 +3,13 @@ import Styles from '../styles/RichText.module.css';
 import { BsTypeBold, BsTypeItalic, BsJustifyLeft, BsJustify, BsJustifyRight, BsTextCenter, BsCodeSlash, BsTypeUnderline } from 'react-icons/bs';
 import { IoMdArrowBack } from 'react-icons/io';
 import { AiOutlineOrderedList, AiOutlineUnorderedList, AiOutlineLink, AiOutlineYoutube } from 'react-icons/ai';
+import { RiAdvertisementLine } from 'react-icons/ri';
 import { BiImageAdd } from 'react-icons/bi';
 import LinkModal from './LinkModal.component';
 import ImageModal from './ImageModal.component';
 import { Button } from 'react-bootstrap'
 import YoutubeSelector from './YouTubeSelector.component';
+import AdsSelector from './AdsSelector.component';
 
 
 const RichTextEditor = () => {
@@ -101,6 +103,7 @@ const RichTextEditor = () => {
                         <LinkModal handleLink={handleLink} icon={<AiOutlineLink data-cmd="createLink" size={24} color='#444' className={Styles.editorControl}  />} />
                         <ImageModal handleImage={handleImage}  icon={<BiImageAdd data-cmd="createLink" size={24} color='#444' className={Styles.editorControl}  />} />
                         <YoutubeSelector  handleYoutube={handleYoutube}  icon={<AiOutlineYoutube data-cmd="createLink" size={24} color='#444' className={Styles.editorControl}  />}/>
+                        <AdsSelector handleImage={handleImage} icon={<RiAdvertisementLine data-cmd="createLink" size={24} color='#444' className={Styles.editorControl}  />}  />
                     </div>
                     <hr />
                     
