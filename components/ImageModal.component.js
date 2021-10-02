@@ -27,7 +27,7 @@ const ImageModal = ({ icon, handleImage }) => {
                     <Modal.Title>Select or Upload Image</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Please select any image or upload existing and press submit
+                    Please upload and submit image
                     <ImageSelector handleClose={handleClose} handleImage={handleImage} />
                 </Modal.Body>
             </Modal>
