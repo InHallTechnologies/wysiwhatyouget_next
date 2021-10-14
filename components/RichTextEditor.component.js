@@ -37,7 +37,7 @@ const RichTextEditor = () => {
     textBody.style.wordWrap = 'break-word';
     const smack = textBody.contentDocument.querySelector('body');
     setTimeout(function() { 
-        smack.innerHTML = `${data}`;
+        smack.innerHTML = `${data.data}`;
     }, 1000);
     }
 
