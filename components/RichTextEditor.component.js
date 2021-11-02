@@ -85,7 +85,7 @@ const RichTextEditor = () => {
 
     const handleYoutube = (videoId) => {
         const textBody = focusRef.current.contentDocument.querySelector('body');
-        textBody.innerHTML += `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+        textBody.innerHTML += `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/><br/><br/><br/><br/><br/>`
     }
 
 
