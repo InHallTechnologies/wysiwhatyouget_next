@@ -54,7 +54,7 @@ const RichTextEditor = () => {
 
     const handleImage = (url, title) => {
         const textBody = focusRef.current.contentDocument.querySelector('body');
-        textBody.innerHTML += `<img style="max-width: 100%;border-radius: 10px;display: block;" src="${url}" alt="${title}"  /><br/>`
+        textBody.innerHTML += `<img style="max-width: 100%;border-radius: 10px;display: block;" src="${url}" alt="${title}"  /><br/><br/><br/><br/><br/><br/>`
     }
 
 
