@@ -73,6 +73,7 @@ const RichTextEditor = () => {
     const handleBackPress = () => {
         const textBody = focusRef.current.contentDocument.querySelector('body');
         window.ReactNativeWebView.postMessage(JSON.stringify({action:"GoBack", content:textBody.innerHTML}));
+        window.top.postMessage('hello', '*')
     }
 
     const handleYoutube = (videoId) => {
