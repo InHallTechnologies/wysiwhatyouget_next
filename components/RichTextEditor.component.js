@@ -58,23 +58,15 @@ const RichTextEditor = () => {
     }
 
 
-    
-    
-
-    // const toggleCode = () => {
-    //     const textBody = focusRef.current.contentDocument.querySelector('body');
-    //     if (showCode.current){
-    //         textBody.innerHTML = textBody.textContent;
-    //         showCode.current = true;  
-    //     }else {
-    //         textBody.textContent = textBody.innerHTML;
-    //         showCode.current = false;
-    //     }
-    // }
 
     const handleSendData = () => {
         const textBody = focusRef.current.contentDocument.querySelector('body');
-        window.ReactNativeWebView.postMessage(JSON.stringify({content:textBody.innerHTML}));
+        if (window.ReactNativeWebView){
+            window.ReactNativeWebView.postMessage(JSON.stringify({content:textBody.innerHTML}));
+        }else {
+            return {content: textBody.innerHTML};
+        }
+        
     }
 
 
