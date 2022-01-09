@@ -27,16 +27,17 @@ const RichTextEditor = () => {
         showCode.current = false;
         focusRef.current.focus();
         
+        window.onmessage = handleMessage
+        
         document.addEventListener('message', handleMessage)
     },[]);
 
     const handleMessage = (data) => {
-        const textBody = document.getElementById('output')
+    const textBody = document.getElementById('output')
     textBody.style.fontSize = "1.5rem"
     textBody.style.fontFamily =  'PT Sans'
     textBody.style.wordWrap = 'break-word';
     const smack = textBody.contentDocument.querySelector('body');
-    console.log("I am here", data);
     setTimeout(function() { 
         smack.innerHTML = `${data.data}`;
     }, 1000);
