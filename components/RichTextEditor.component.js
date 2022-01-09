@@ -64,7 +64,7 @@ const RichTextEditor = () => {
         if (window.ReactNativeWebView){
             window.ReactNativeWebView.postMessage(JSON.stringify({content:textBody.innerHTML}));
         }else {
-            return {content: textBody.innerHTML};
+            window.parent.postMessage({content:textBody.innerHTML, type:'data'}, '*')
         }
         
     }
