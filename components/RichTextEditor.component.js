@@ -36,6 +36,7 @@ const RichTextEditor = () => {
     textBody.style.fontFamily =  'PT Sans'
     textBody.style.wordWrap = 'break-word';
     const smack = textBody.contentDocument.querySelector('body');
+    console.log("I am here", data);
     setTimeout(function() { 
         smack.innerHTML = `${data.data}`;
     }, 1000);
