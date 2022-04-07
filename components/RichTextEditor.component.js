@@ -28,6 +28,11 @@ const RichTextEditor = () => {
         focusRef.current.focus();
         
         window.onmessage = handleMessage
+        focusRef.current.contentDocument.body.addEventListener('paste', (e) => {
+            e.preventDefault();
+            const text = e.clipboardData.getData('text/plain');
+            focusRef.current.contentDocument.execCommand("insertHTML", false, text);
+        })
         
         document.addEventListener('message', handleMessage)
     },[]);
@@ -39,7 +44,10 @@ const RichTextEditor = () => {
     textBody.style.wordWrap = 'break-word';
     const smack = textBody.contentDocument.querySelector('body');
     setTimeout(function() { 
-        smack.innerHTML = `${data.data}`;
+        if (typeof(data.data) === 'string') {
+            smack.innerHTML = `${data.data}`;
+        }
+        
     }, 1000);
     }
 
@@ -56,7 +64,21 @@ const RichTextEditor = () => {
 
     const handleImage = (url, title) => {
         const textBody = focusRef.current.contentDocument.querySelector('body');
+        console.log(getCaretPosition(focusRef.current.contentDocument))
         textBody.innerHTML += `<img style="max-width: 100%;border-radius: 10px;display: block;" src="${url}" alt="${title}"  /><br/><br/><br/><br/><br/><br/>`
+    }
+
+    function getCaretPosition (node) {
+        var range = window.getSelection().getRangeAt(0),
+            preCaretRange = range.cloneRange(),
+            caretPosition,
+            tmp = document.createElement("div");
+    
+        preCaretRange.selectNodeContents(node);
+        preCaretRange.setEnd(range.endContainer, range.endOffset);
+        tmp.appendChild(preCaretRange.cloneContents());
+        caretPosition = tmp.innerHTML.length;
+        return caretPosition;
     }
 
 
