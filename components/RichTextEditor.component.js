@@ -31,8 +31,15 @@ const RichTextEditor = () => {
         focusRef.current.contentDocument.body.addEventListener('paste', (e) => {
             e.preventDefault();
             const text = e.clipboardData.getData('text/plain');
-            focusRef.current.contentDocument.execCommand("insertHTML", false, text);
+            focusRef.current.contentDocument.execCommand("insertText", false, text);
         })
+
+        focusRef.current.contentDocument.body.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                const caretIndex = getCaretIndex(textBody);
+                console.log(caretIndex)
+            }
+          });
         
         document.addEventListener('message', handleMessage)
     },[]);
@@ -64,22 +71,42 @@ const RichTextEditor = () => {
 
     const handleImage = (url, title) => {
         const textBody = focusRef.current.contentDocument.querySelector('body');
-        console.log(getCaretPosition(focusRef.current.contentDocument))
-        textBody.innerHTML += `<img style="max-width: 100%;border-radius: 10px;display: block;" src="${url}" alt="${title}"  /><br/><br/><br/><br/><br/><br/>`
+        const caretIndex = getCaretIndex(textBody);
+        console.log(caretIndex)
+        const firstHalf = textBody.innerHTML.substring(0, caretIndex)
+        const secondHalf = textBody.innerHTML.substring(caretIndex, textBody.innerHTML.length - 1)
+        textBody.innerHTML = firstHalf + `<br/><img style="max-width: 100%;border-radius: 2px;display: block;" src="${url}" alt="${title}"  /><br/>` + secondHalf
     }
 
-    function getCaretPosition (node) {
-        var range = window.getSelection().getRangeAt(0),
-            preCaretRange = range.cloneRange(),
-            caretPosition,
-            tmp = document.createElement("div");
-    
-        preCaretRange.selectNodeContents(node);
-        preCaretRange.setEnd(range.endContainer, range.endOffset);
-        tmp.appendChild(preCaretRange.cloneContents());
-        caretPosition = tmp.innerHTML.length;
-        return caretPosition;
-    }
+    function getCaretIndex(element) {
+        // let position = 0;
+        // const isSupported = typeof window.getSelection !== "undefined";
+        // if (isSupported) {
+        //   const selection = focusRef.current.contentDocument.getSelection();
+         
+        //   if (selection.rangeCount !== 0) {
+        //     const range = focusRef.current.contentDocument.getSelection().getRangeAt(0);
+            
+        //     const preCaretRange = range.cloneRange();
+            
+        //     preCaretRange.selectNodeContents(element);
+            
+        //     preCaretRange.setEnd(range.endContainer, range.endOffset);
+        //     const upToClickedHtml = range
+        //     console.log(upToClickedHtml)
+        //     position = preCaretRange.toString().length;
+        //   }
+        // }
+        // return position;
+
+        var target = focusRef.current.contentDocument.createTextNode("\u0001");
+        focusRef.current.contentDocument.getSelection().getRangeAt(0).insertNode(target);
+        var position = focusRef.current.contentDocument.querySelector('body').innerHTML.indexOf("\u0001");
+        target.parentNode.removeChild(target);
+        return position
+      }
+
+     
 
 
 
@@ -105,8 +132,16 @@ const RichTextEditor = () => {
     }
 
     const handleYoutube = (videoId) => {
+        // const textBody = focusRef.current.contentDocument.querySelector('body');
+        // textBody.innerHTML += `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/><br/><br/><br/><br/><br/>`
         const textBody = focusRef.current.contentDocument.querySelector('body');
-        textBody.innerHTML += `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/><br/><br/><br/><br/><br/>`
+        const caretIndex = getCaretIndex(textBody);
+        console.log(caretIndex)
+        const firstHalf = textBody.innerHTML.substring(0, caretIndex)
+        const secondHalf = textBody.innerHTML.substring(caretIndex, textBody.innerHTML.length - 1)
+        textBody.innerHTML = firstHalf + `<br/><div style="display: flex; justify-content: center; align-items: center;"><iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><br/>` + secondHalf
+    
+        
     }
 
 
