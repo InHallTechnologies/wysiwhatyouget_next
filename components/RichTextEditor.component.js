@@ -21,8 +21,6 @@ const RichTextEditor = () => {
     useEffect(() => {
         focusRef.current.contentDocument.designMode = "On";
         const textBody = focusRef.current.contentDocument.querySelector('body');
-        textBody.style.fontSize = "1.5rem"
-        textBody.style.fontFamily =  'PT Sans'
         textBody.style.wordWrap = 'break-word';
         showCode.current = false;
         focusRef.current.focus();
@@ -46,8 +44,6 @@ const RichTextEditor = () => {
 
     const handleMessage = (data) => {
     const textBody = document.getElementById('output')
-    textBody.style.fontSize = "1.5rem"
-    textBody.style.fontFamily =  'PT Sans'
     textBody.style.wordWrap = 'break-word';
     const smack = textBody.contentDocument.querySelector('body');
     setTimeout(function() { 
