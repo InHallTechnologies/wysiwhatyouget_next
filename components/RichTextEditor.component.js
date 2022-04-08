@@ -31,7 +31,7 @@ const RichTextEditor = () => {
         focusRef.current.contentDocument.body.addEventListener('paste', (e) => {
             e.preventDefault();
             const text = e.clipboardData.getData('text/plain');
-            focusRef.current.contentDocument.execCommand("insertText", false, text);
+            focusRef.current.contentDocument.execCommand("insertHTML", false, text);
         })
 
         focusRef.current.contentDocument.body.addEventListener('keyup', function(e) {
@@ -79,25 +79,6 @@ const RichTextEditor = () => {
     }
 
     function getCaretIndex(element) {
-        // let position = 0;
-        // const isSupported = typeof window.getSelection !== "undefined";
-        // if (isSupported) {
-        //   const selection = focusRef.current.contentDocument.getSelection();
-         
-        //   if (selection.rangeCount !== 0) {
-        //     const range = focusRef.current.contentDocument.getSelection().getRangeAt(0);
-            
-        //     const preCaretRange = range.cloneRange();
-            
-        //     preCaretRange.selectNodeContents(element);
-            
-        //     preCaretRange.setEnd(range.endContainer, range.endOffset);
-        //     const upToClickedHtml = range
-        //     console.log(upToClickedHtml)
-        //     position = preCaretRange.toString().length;
-        //   }
-        // }
-        // return position;
 
         var target = focusRef.current.contentDocument.createTextNode("\u0001");
         focusRef.current.contentDocument.getSelection().getRangeAt(0).insertNode(target);
